@@ -129,7 +129,7 @@ path = "src/optional/server.rs"
 [dependencies]
 tonic = { path = "../tonic", features = ["tls"] }
 prost = "0.6"
-tokio = { version = "0.2", features = ["rt-threaded", "time", "stream", "fs", "macros", "uds"] }
+tokio = { version = "0.2", features = ["rt-threaded", "time", "stream", "fs", "macros", "uds", "process"] }
 futures = { version = "0.3", default-features = false, features = ["alloc"] }
 async-stream = "0.2"
 tower = "0.3"
@@ -153,6 +153,7 @@ pin-project = "0.4.17"
 # Health example
 tonic-health = { path = "../tonic-health" }
 listenfd = "0.3"
+nix = "*"
 
 [build-dependencies]
 tonic-build = { path = "../tonic-build", features = ["prost"] }
