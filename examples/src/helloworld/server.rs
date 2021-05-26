@@ -17,11 +17,16 @@ impl Greeter for MyGreeter {
         request: Request<HelloRequest>,
     ) -> Result<Response<HelloReply>, Status> {
         println!("Got a request from {:?}", request.remote_addr());
-
-        let reply = hello_world::HelloReply {
-            message: format!("Hello {}!", request.into_inner().name),
-        };
-        Ok(Response::new(reply))
+        let mut ct = 0;
+        loop {
+            println!("working {}", ct);
+            tokio::time::sleep(std::time::Duration::from_secs(1)).await;
+            ct += 1;
+        }
+        // let reply = hello_world::HelloReply {
+        //     message: format!("Hello {}!", request.into_inner().name),
+        // };
+        // Ok(Response::new(reply))
     }
 }
 

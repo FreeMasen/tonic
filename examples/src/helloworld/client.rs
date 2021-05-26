@@ -12,8 +12,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let request = tonic::Request::new(HelloRequest {
         name: "Tonic".into(),
     });
-
-    let response = client.say_hello(request).await?;
+    let response =
+        tokio::time::timeout(std::time::Duration::from_secs(2), client.say_hello(request)).await;
 
     println!("RESPONSE={:?}", response);
 
